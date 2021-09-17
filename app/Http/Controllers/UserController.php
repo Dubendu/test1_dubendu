@@ -16,8 +16,8 @@ class UserController extends Controller
         $request->validate([
             'firstname'=>'required',
             'lastname'=>'required',
-            'email'=>'required|email',
-            'contact'=>'required',
+            'email'=>'required|email|unique:App\Models\User,email',
+            'contact'=>'required|unique:App\Models\User,contact',
             'city'=>'required',
             'gender'=>'required',
             'image'=>'required|mimes:jpeg,jpg,png|max:1048',

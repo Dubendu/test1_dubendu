@@ -67,7 +67,7 @@
         </form>
     </div>
 </div><br><br>
-<script>
+<script type="text/javascript">
     function yesnoCheck(that) {
         if (that.value == "male") {
             document.getElementById("agefield").style.display = "block";
@@ -75,6 +75,24 @@
             document.getElementById("agefield").style.display = "none";
         }
     }
+    $('#userForm').validate({
+        rules:{
+            email:{
+                remote:'./checkEmail.php',
+            },
+            contact:{
+                remote:'./checkContact.php',
+            }
+        },
+        messages:{
+            email:{
+                remote:'This Email ID already exist',
+            },
+            contact:{
+                rmeote:'This contact already exist',
+            }
+        }
+    });
 </script>
 @endsection
  
