@@ -88,6 +88,7 @@ function validate3(){
     errNode3.html("");
     emailNode.css({border:'2px green solid'});
     let email=emailNode.val();
+    let _token = $('input[name="_token"]').val();
     let ss=email.substring(email.indexOf('@')+1);
     if(email===""){
         errNode3.html("<b>this field is required.</b>");
@@ -98,6 +99,24 @@ function validate3(){
         errNode3.html("<b>Invalid email ID</b>");
         emailNode.css({border:'2px red solid'});
         return false;
+    }
+    else if(email){
+        $.ajax({
+            url:"{{ route('email_available.check') }}",
+            method:"POST",
+            data:{email:email, _token:_token},
+            success:function(result)
+            {
+             if(result == 'unique')
+             {
+              errNode3.html('<label class="text-success">Email Available</label>');
+             }
+             else
+             {
+              errNode3.html('<label class="text-danger">Email not Available</label>');
+             }
+            }
+           })
     }
     else
         return true;

@@ -31,3 +31,4 @@ Route::get('/users/delete/{id}',[UserController::class,'delete'])->name('users.d
 Route::get('/users/edit/{id}',[UserController::class,'edit'])->name('users.edit');
 Route::post('/users/update',[UserController::class,'update'])->name('users.update');
 Route::get('/users/status-update/{id}',[UserController::class,'status_update'])->name('users.status-update');
+Route::post('/users/check', [UserController::class,'check'])->name('email_available.check');

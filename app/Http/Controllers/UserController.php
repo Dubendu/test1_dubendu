@@ -105,4 +105,23 @@ class UserController extends Controller
         DB::table('users')->where('id',$id)->update($values);
         return redirect('/users/list');
         }
+
+    public function check(Request $request)
+        {
+        if($request->get('email'))
+        {
+        $email = $request->get('email');
+        $data = DB::table("users")
+        ->where('email', $email)
+        ->count();
+        if($data > 0)
+        {
+        echo 'not_unique';
+        }
+        else
+        {
+        echo 'unique';
+        }
+        }
+        }
 }

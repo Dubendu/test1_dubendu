@@ -75,24 +75,6 @@
             document.getElementById("agefield").style.display = "none";
         }
     }
-    $('#userForm').validate({
-        rules:{
-            email:{
-                remote:'./checkEmail.php',
-            },
-            contact:{
-                remote:'./checkContact.php',
-            }
-        },
-        messages:{
-            email:{
-                remote:'This Email ID already exist',
-            },
-            contact:{
-                rmeote:'This contact already exist',
-            }
-        }
-    });
 </script>
 @endsection
  
