@@ -5,7 +5,7 @@
         <h1 style="text-align:center;">User Registration</h1>
         <button class="btn btn-success" onclick="window.location='{{ url()->previous() }}'">Go Back</button>
         <form class="row g-3" id="userForm" action="{{route('users.store')}}" method="post" enctype="multipart/form-data">
-        @csrf
+        {{ csrf_field() }}
             <div class="col-md-6">
                 <label for="firstname" class="form-label">First Name</label>
                 <input type="text" class="form-control" id="firstname" name="firstname">

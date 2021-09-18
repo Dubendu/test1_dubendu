@@ -95,7 +95,5 @@
     <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
     <script src="{{asset('dist/js/validation.js')}}"></script>
     <script src="{{asset('dist/js/jquery-3.6.0.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js" type="text/javascript"></script>
   </body>
 </html>

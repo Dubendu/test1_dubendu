@@ -102,7 +102,7 @@ function validate3(){
     }
     else if(email){
         $.ajax({
-            url:"{{ route('email_available.check') }}",
+            url: '/users/check-email',
             method:"POST",
             data:{email:email, _token:_token},
             success:function(result)
@@ -110,24 +110,26 @@ function validate3(){
              if(result == 'unique')
              {
               errNode3.html('<label class="text-success">Email Available</label>');
+              emailNode.css({border:'2px green solid'});
              }
              else
              {
-              errNode3.html('<label class="text-danger">Email not Available</label>');
+              errNode3.html('<label class="text-danger">Email Already Exists</label>');
+              emailNode.css({border:'2px red solid'});
              }
             }
            })
     }
     else
         return true;
-
 }
 
 function validate4(){
     errNode4.html("");
     contactNode.css({border:'2px green solid'});
     let contact=contactNode.val();
-    let regexpress=/^[\d\(\)\-+]+$/;
+    let _token = $('input[name="_token"]').val();
+    let regexpress=/^[\d\(\)\-+\s]+$/;
     if(contact===""){
         errNode4.html("<b>this field is required.</b>");
         contactNode.css({border:'2px red solid'});
@@ -141,6 +143,26 @@ function validate4(){
     else if(contact.length>14){
         errNode4.html("<b>contact length should be less than 14.</b>");
         contactNode.css({border:'2px red solid'});
+    }
+    else if(contact){
+        $.ajax({
+            url: '/users/check-contact',
+            method:"POST",
+            data:{contact:contact, _token:_token},
+            success:function(result)
+            {
+             if(result == 'unique')
+             {
+              errNode4.html('<label class="text-success"></label>');
+              contactNode.css({border:'2px green solid'});
+             }
+             else
+             {
+              errNode4.html('<label class="text-danger">Contact Already Exists</label>');
+              contactNode.css({border:'2px red solid'});
+             }
+            }
+           })
     }
     else
         return true;
