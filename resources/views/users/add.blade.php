@@ -31,15 +31,17 @@
                 <input type="text" class="form-control" id="city" name="city">
                 <span id="err5" class="text-danger">@error('city'){{$message}}@enderror</span>
             </div>
-            <label class="form-label" id="gender" >Gender</label>
-            <span id="err6" class="text-danger">@error('gender'){{$message}}@enderror</span>
-            <div class="form-check form-check-inline">
-                <input type="radio" name="gender" id="male" class="form-check-input" value="male" onclick="yesnoCheck(this);">
+            <div class="form-group" onchange="yesnoCheck()">
+            <label class="control-label" id="gender" for="gender">Gender</label>
+            <span id="err6" class="text-danger">@error('gender'){{$message}}@enderror</span><br><br>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" name="gender" id="male" class="form-check-input" value="male" >
                 <label class="form-check-label" for="male">Male</label>
             </div>
-            <div class="form-check form-check-inline"> 
+            <div class="mb-3 form-check form-check-inline"> 
                 <input type="radio" name="gender" id="female" class="form-check-input" value="female">
                 <label class="form-check-label" for="female">Female</label>
+            </div>
             </div>
             <div class="col-12" id="agefield" style="display: none;">
                 <label for="age" class="form-label">Age</label> 
@@ -66,8 +68,8 @@
     </div>
 </div><br><br>
 <script type="text/javascript">
-    function yesnoCheck(that) {
-        if (that.value == "male") {
+     function yesnoCheck() {
+        if (document.getElementById("male").checked) {
             document.getElementById("agefield").style.display = "block";
         } else {
             document.getElementById("agefield").style.display = "none";
