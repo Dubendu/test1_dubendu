@@ -125,7 +125,7 @@ class UserController extends Controller
         }
         }
 
-        public function checkContact(Request $request)
+    public function checkContact(Request $request)
         {
         if($request->get('contact'))
         {

@@ -118,7 +118,7 @@ function validate3(){
               emailNode.css({border:'2px red solid'});
              }
             }
-           })
+           });
     }
     else
         return true;
@@ -143,6 +143,7 @@ function validate4(){
     else if(contact.length>14){
         errNode4.html("<b>contact length should be less than 14.</b>");
         contactNode.css({border:'2px red solid'});
+        return false;
     }
     else if(contact){
         $.ajax({
@@ -151,18 +152,19 @@ function validate4(){
             data:{contact:contact, _token:_token},
             success:function(result)
             {
-             if(result == 'unique')
+             if(result == 'not_unique')
              {
-              errNode4.html('<label class="text-success"></label>');
-              contactNode.css({border:'2px green solid'});
+                errNode4.html('<label class="text-danger">Contact Already Exists</label>');
+                contactNode.css({border:'2px red solid'});
              }
-             else
+             else if (result == 'unique')
              {
-              errNode4.html('<label class="text-danger">Contact Already Exists</label>');
-              contactNode.css({border:'2px red solid'});
+                errNode4.html('<label class="text-success" hidden>Contact Available</label>');
+                contactNode.css({border:'2px green solid'});
              }
             }
-           })
+           });
+        return false;
     }
     else
         return true;

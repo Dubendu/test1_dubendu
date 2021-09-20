@@ -31,17 +31,15 @@
                 <input type="text" class="form-control" id="city" name="city">
                 <span id="err5" class="text-danger">@error('city'){{$message}}@enderror</span>
             </div>
-            <label class="form-label"id="gender" >Gender</label>
-            <span id="err6" class="text-danger"></span>
-            <div class="col-12 form-check form-check-inline">
+            <label class="form-label" id="gender" >Gender</label>
+            <span id="err6" class="text-danger">@error('gender'){{$message}}@enderror</span>
+            <div class="form-check form-check-inline">
                 <input type="radio" name="gender" id="male" class="form-check-input" value="male" onclick="yesnoCheck(this);">
-                <label class="form-check-label">Male</label>
-                <span name="errg" class="text-danger">@error('gender'){{$message}}@enderror</span>
+                <label class="form-check-label" for="male">Male</label>
             </div>
-            <div class="col-12 form-check form-check-inline"> 
+            <div class="form-check form-check-inline"> 
                 <input type="radio" name="gender" id="female" class="form-check-input" value="female">
-                <label class="form-check-label">Female</label>
-                <span name="errg" class="text-danger">@error('gender'){{$message}}@enderror</span>
+                <label class="form-check-label" for="female">Female</label>
             </div>
             <div class="col-12" id="agefield" style="display: none;">
                 <label for="age" class="form-label">Age</label> 
