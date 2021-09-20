@@ -20,12 +20,12 @@
             <div class="col-12">
                 <label for="email" class="form-label">Email Address</label>
                 <input type="email" class="form-control" id="email" name="email" value="{{$user['email']}}">
-                <span id="err3u" class="text-danger">@error('email'){{$message}}@enderror</span>
+                <span id="err3" class="text-danger">@error('email'){{$message}}@enderror</span>
             </div>
             <div class="col-12">
                 <label for="contact" class="form-label">Contact No.</label>
                 <input type="text" class="form-control" id="contact" name="contact" value="{{$user['contact']}}">
-                <span id="err4u" class="text-danger">@error('contact'){{$message}}@enderror</span>
+                <span id="err4" class="text-danger">@error('contact'){{$message}}@enderror</span>
             </div>
             <div class="col-12">
                 <label for="city" class="form-label">City</label>
