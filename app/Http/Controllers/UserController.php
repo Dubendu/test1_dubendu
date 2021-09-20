@@ -49,18 +49,18 @@ class UserController extends Controller
     }
     
     public function delete($id){
-        $data=User::find($id);
+        $data=User::findOrFail($id);
         $data->delete();
         return redirect('/users/list');
     }
 
     public function edit($id){
-        $data=User::find($id);
+        $data=User::findOrFail($id);
         return view('users.update',['user'=>$data]);
     }
 
     public function update(Request $request){
-        $data=User::find($request->id);
+        
         $request->validate([
             'firstname'=>'required',
             'lastname'=>'required',
@@ -70,6 +70,7 @@ class UserController extends Controller
             'gender'=>'required',
             'image'=>'required|mimes:jpeg,jpg,png|max:1048'
         ]);
+        $data=User::findOrFail($request->id);
         $data->firstname=$request->firstname;
         $data->lastname=$request->lastname;
         $data->email=$request->email;
