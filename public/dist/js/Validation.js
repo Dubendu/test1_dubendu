@@ -164,7 +164,6 @@ function validate4(){
              }
             }
            });
-        return false;
     }
     else
         return true;
@@ -194,7 +193,7 @@ function radio_check() {
       return false;
     }
     else {
-      $('#gender').hide();
+      //$('#gender').hide();
       return true;
     }
   }
@@ -203,7 +202,6 @@ function radio_check() {
     errNode7.html("");
     imageNode.css({border:'2px green solid'});
     let image=imageNode.val();
-    var file_size = $('#image')[0].files[0].size;
     let regexpress=/\.(jpe?g|png)$/i;
     if(image===""){
         errNode7.html("<b>this field is required.</b>");
@@ -215,7 +213,7 @@ function radio_check() {
         imageNode.css({border:'2px red solid'});
         return false;
     }
-    else if(file_size>1000000){
+    else if($('#image')[0].files[0].size>1000000){
         errNode7.html("<b>Image size should be less than 1MB</b>");
 		imageNode.css({border:'2px red solid'});
 		return false;

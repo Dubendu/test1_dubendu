@@ -1,10 +1,9 @@
 @extends('admin.master')
-@section('userlist')
+@section('usertrash')
 <div class="content-wrapper">
     <div class="container">
-        <h1 style="text-align:center;">Show Users</h1>
-            <button class="btn btn-success" onclick="window.location='{{ url("/users/add") }}'">Add User</button>
-            <button class="btn btn-danger" onclick="window.location='{{ url("/users/trash") }}'">Go To Trash</button>
+        <h1 style="text-align:center;">Manage Users Trash</h1>
+            <button class="btn btn-success" onclick="window.location='{{ url()->previous() }}'">Go Back</button>
             <table class="table table-striped">
                 <tr>
                     <th>ID</th>
@@ -39,12 +38,11 @@
                         <a href="{{route('users.status-update',$user->id)}}" class="btn btn-danger">Inactive</a>
                         @endif
                     </td>
-                    <td><button class="btn btn-danger"><a class="edit-del-link" onclick="return confirm('Data will move to trash. Are you want to continue?')" href="{{route('users.delete',$user->id)}}"><i class="fa fa-trash"></i></a></button>
-                    <button class="btn btn-warning"> <a class="edit-del-link" href="{{route('users.edit',$user->id)}}"><i class="fa fa-edit"></i></a></button></td>
+                    <td><button class="btn btn-danger"><a class="edit-del-link" onclick="return confirm('Data will delete permanently. Are you want to continue?')" href="{{route('users.force-delete',$user->id)}}">Delete</a></button>
+                    <button class="btn btn-success"> <a class="edit-del-link" href="{{route('users.restore',$user->id)}}">Restore</a></button></td>
                 </tr>
                 @endforeach
             </table> 
     </div> 
-    <span style="text-align:center;">{{$users->links()}}</span><br>
 </div>
 @endsection

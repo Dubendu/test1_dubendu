@@ -90,6 +90,23 @@ class UserController extends Controller
         return redirect('/users/list');
     }
 
+    public function trash(){
+        $data=User::onlyTrashed()->get();
+        return view('users.user-trash',['users'=>$data]);
+    }
+
+    public function restore($id){
+        $data=User::withTrashed()->findOrFail($id);
+        $data->restore();
+        return redirect('/users/list');
+    }
+
+    public function forceDelete($id){
+        $data=User::withTrashed()->findOrFail($id);
+        $data->forceDelete();
+        return redirect('/users/list');
+    }
+
     public function status_update($id){
         $data = DB::table('users')
         ->select('status')

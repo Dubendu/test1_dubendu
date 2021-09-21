@@ -33,3 +33,6 @@ Route::post('/users/update',[UserController::class,'update'])->name('users.updat
 Route::get('/users/status-update/{id}',[UserController::class,'status_update'])->name('users.status-update');
 Route::post('/users/check-email', [UserController::class,'checkEmail'])->name('users.check-email');
 Route::post('/users/check-contact', [UserController::class,'checkContact'])->name('users.check-contact');
+Route::get('/users/trash',[UserController::class,'trash'])->name('users.trash');
+Route::get('/users/restore/{id}',[UserController::class,'restore'])->name('users.restore');
+Route::get('/users/force-delete/{id}',[UserController::class,'forceDelete'])->name('users.force-delete');

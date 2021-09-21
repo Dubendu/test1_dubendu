@@ -53,6 +53,7 @@
       @yield('content')
       @yield('userlist')
       @yield('adduser')
+      @yield('usertrash')
       @yield('updateuser')
       
       @include('admin.footer')
